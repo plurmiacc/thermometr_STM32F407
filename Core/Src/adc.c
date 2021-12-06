@@ -42,9 +42,9 @@ static inline void ENABLE_ADC1_DMA(void){
 
 	CLEAR_BIT(DMAStream->FCR, DMA_SxFCR_DMDIS); /* Disable FiFo */
 
-	WRITE_REG(DMAStream->PAR, &(ADC1->DR)); /* Source */
+	WRITE_REG(DMAStream->PAR, (uint32_t)(&(ADC1->DR))); /* Source */
 
-	WRITE_REG(DMAStream->M0AR, &(adcContext.adcval)); /* Destination */
+	WRITE_REG(DMAStream->M0AR, (uint32_t)(&(adcContext.adcval))); /* Destination */
 
 	SET_BIT(DMAStream->CR, DMA_SxCR_EN); /* Enable Stream */
 }
